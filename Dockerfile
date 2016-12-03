@@ -21,7 +21,7 @@ RUN \
  && update-alternatives --auto java \
  ## Install JNA
  && apt-get -y install libjna-java \
- && ln -s /usr/share/java/jna.jar install_location/lib \
+ && ln -s /usr/share/java/jna.jar /usr/share/cassandra/lib \
  ## Install Elassandra 
  && apt-get clean && apt-get -y install elassandra \
  ## Setup Extras
