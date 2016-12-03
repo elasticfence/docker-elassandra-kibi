@@ -23,10 +23,9 @@ RUN \
  && apt-get -y install libjna-java \
  # && ln -s /usr/share/java/jna.jar /usr/share/cassandra/lib \
  ## Install Elassandra 
- && apt-get clean && apt-get -y install elassandra \
+ && apt-get clean && apt-get -y --force-yes install elassandra \
  ## Setup Extras
  && groupadd -r kibi && useradd -r -m -g kibi kibi \
- && apt-get update && apt-get clean \
  && wget -O /dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.1.3/dumb-init_1.1.3_amd64 \
  && chmod +x /dumb-init \
  && curl -sL https://deb.nodesource.com/setup_4.x | bash - \
@@ -46,7 +45,7 @@ RUN \
  && ./bin/kibi plugin --install elastic/sense \
  && chown -R kibi:kibi /opt/kibi \
  ## Cleanup
- && apt-get autoremove \
+ && apt-get autoremove && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY entrypoint.sh /opt/
