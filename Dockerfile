@@ -20,7 +20,7 @@ RUN \
  && apt-get -y --force-yes install oracle-java8-jre \
  && update-alternatives --auto java \
  ## Install JNA
- && sudo apt-get -y install libjna-java \
+ && apt-get -y install libjna-java \
  && ln -s /usr/share/java/jna.jar install_location/lib \
  ## Install Elassandra 
  && apt-get clean && apt-get -y install elassandra \
