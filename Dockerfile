@@ -56,7 +56,6 @@ RUN chmod 755 /opt/entrypoint.sh
 
 EXPOSE 7000/tcp 7001/tcp 7199/tcp 9042/tcp 9160/tcp 9200/tcp 5601/tcp
 
-ENTRYPOINT ["/opt/entrypoint.sh"]
-
-
-
+# Exec on start
+ENTRYPOINT ["/dumb-init", "--"]
+CMD ["/opt/entrypoint.sh"]
