@@ -4,13 +4,10 @@ FROM debian:latest
 MAINTAINER lmangani <lorenzo.mangani@gmail.com>
 
 # Setup
-RUN cat << _EOF_ > /etc/apt/sources.list.d/testing.list \
- deb     http://mirror.steadfast.net/debian/ testing main contrib non-free \
- deb     http://ftp.us.debian.org/debian/    testing main contrib non-free \
- _EOF_ \
- && cat << _EOF_ > /etc/apt/sources.list.d/elassandra.list \
- deb http://packages.elassandra.io/deb/ ./ \
- _EOF_ \
+RUN \
+ echo "deb     http://mirror.steadfast.net/debian/ testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list \
+ && echo "deb     http://ftp.us.debian.org/debian/    testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list \
+ && echo "deb http://packages.elassandra.io/deb/ ./" >> /etc/apt/sources.list.d/elassandra.list \
  && wget -O- -q http://packages.elassandra.io/pub/GPG-KEY-Elassandra > /tmp/GPG-KEY-Elassandra \
  && apt-key add  /tmp/GPG-KEY-Elassandra \
  # Setup pip packages
