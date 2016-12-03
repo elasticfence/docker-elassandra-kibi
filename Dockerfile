@@ -8,6 +8,7 @@ RUN \
  echo "deb     http://mirror.steadfast.net/debian/ testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list \
  && echo "deb     http://ftp.us.debian.org/debian/    testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list \
  && echo "deb http://packages.elassandra.io/deb/ ./" >> /etc/apt/sources.list.d/elassandra.list \
+ && apt-get update && apt-get install -y wget \
  && wget -O- -q http://packages.elassandra.io/pub/GPG-KEY-Elassandra > /tmp/GPG-KEY-Elassandra \
  && apt-key add  /tmp/GPG-KEY-Elassandra \
  # Setup pip packages
