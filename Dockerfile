@@ -22,14 +22,16 @@ RUN cat << _EOF_ > /etc/apt/sources.list.d/testing.list \
  && apt-get -y install oracle-java8-jre \
  && update-alternatives --auto java \
  ## Install JNA
- && sudo apt-get install libjna-java \
+ && sudo apt-get -y install libjna-java \
  && ln -s /usr/share/java/jna.jar install_location/lib \
  ## Install Elassandra 
- && apt-get clean && apt-get install elassandra \
+ && apt-get clean && apt-get -y install elassandra \
  && systemctl enable elassandra 
 
 COPY entrypoint.sh /opt/
 RUN chmod 755 /opt/entrypoint.sh
+
+EXPOSE 7000/tcp 7001/tcp 7199/tcp 9042/tcp 9160/tcp 9200/tcp 5601/tcp
 
 ENTRYPOINT ["/opt/entrypoint.sh"]
 
