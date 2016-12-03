@@ -17,7 +17,7 @@ RUN \
  && pip install --upgrade cassandra-driver \
  && pip install cqlsh \
  ## Install Java
- && apt-get -y install oracle-java8-jre \
+ && apt-get -y --force-yes install oracle-java8-jre \
  && update-alternatives --auto java \
  ## Install JNA
  && sudo apt-get -y install libjna-java \
