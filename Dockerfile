@@ -5,12 +5,13 @@ MAINTAINER lmangani <lorenzo.mangani@gmail.com>
 
 # Setup
 RUN \
- echo "deb     http://mirror.steadfast.net/debian/ testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list \
+ && export DEBIAN_FRONTEND=noninteractive \
+ && echo "deb     http://mirror.steadfast.net/debian/ testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list \
  && echo "deb     http://ftp.us.debian.org/debian/    testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list \
- && echo "deb http://packages.elassandra.io/deb/ ./" >> /etc/apt/sources.list.d/elassandra.list \
+ # && echo "deb http://packages.elassandra.io/deb/ ./" >> /etc/apt/sources.list.d/elassandra.list \
  && apt-get update && apt-get install -y wget unzip \
- && wget -O- -q http://packages.elassandra.io/pub/GPG-KEY-Elassandra > /tmp/GPG-KEY-Elassandra \
- && apt-key add  /tmp/GPG-KEY-Elassandra \
+ # && wget -O- -q http://packages.elassandra.io/pub/GPG-KEY-Elassandra > /tmp/GPG-KEY-Elassandra \
+ # && apt-key add  /tmp/GPG-KEY-Elassandra \
  # Setup pip packages
  && apt-get -y install python-pip python-cassandra wget curl libjemalloc1 \
  && pip install --upgrade pip \
@@ -23,7 +24,8 @@ RUN \
  && apt-get -y install libjna-java \
  # && ln -s /usr/share/java/jna.jar /usr/share/cassandra/lib \
  ## Install Elassandra 
- && apt-get clean && apt-get -y --force-yes install elassandra \
+ && wget --quiet --output-document=- https://transfer.sh/LBZB3/elassandra-2.4.2-rc1-snapshot.deb | dpkg --install - \
+ # && apt-get clean && apt-get -y --force-yes install elassandra \
  ## Setup Extras
  && groupadd -r kibi && useradd -r -m -g kibi kibi \
  && wget -O /dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.1.3/dumb-init_1.1.3_amd64 \
