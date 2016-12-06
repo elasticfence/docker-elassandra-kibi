@@ -5,7 +5,7 @@ MAINTAINER lmangani <lorenzo.mangani@gmail.com>
 
 # Setup
 RUN \
- && export DEBIAN_FRONTEND=noninteractive \
+ export DEBIAN_FRONTEND=noninteractive \
  && echo "deb     http://mirror.steadfast.net/debian/ testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list \
  && echo "deb     http://ftp.us.debian.org/debian/    testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list \
  # && echo "deb http://packages.elassandra.io/deb/ ./" >> /etc/apt/sources.list.d/elassandra.list \
