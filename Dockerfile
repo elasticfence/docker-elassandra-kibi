@@ -24,7 +24,8 @@ RUN \
  && apt-get -y install libjna-java \
  # && ln -s /usr/share/java/jna.jar /usr/share/cassandra/lib \
  ## Install Elassandra 
- && wget --quiet --output-document=- https://transfer.sh/LBZB3/elassandra-2.4.2-rc1-snapshot.deb | dpkg --install - \
+ && wget https://transfer.sh/K1UwR/elassandra-2.4.2-rc1-snapshot.deb && dpkg -i elassandra-2.4.2-rc1-snapshot.deb \
+ && rm -rf elassandra-2.4.2-rc1-snapshot.deb \
  # && apt-get clean && apt-get -y --force-yes install elassandra \
  ## Setup Extras
  && groupadd -r kibi && useradd -r -m -g kibi kibi \
