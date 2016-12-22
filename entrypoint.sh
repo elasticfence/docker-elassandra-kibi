@@ -21,7 +21,5 @@ echo "Starting Kibi... "
 
 # Get Cassandra Status
 $CASSANDRA_HOME/bin/nodetool status &
-# Get ES Status
-status
 
 tail -f $CASSANDRA_LOGS/system.log
