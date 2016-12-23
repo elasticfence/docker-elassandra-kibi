@@ -49,6 +49,10 @@ RUN \
  && ./bin/kibi plugin --install elastic/sense \
  && chown -R kibi:kibi /opt/kibi \
  && chown -R kibi:kibi /opt/elassandra \
+ ## Reverse Proxy
+ && npm install --global @cedx/reverse-proxy \
+ ## Swapoff attempt
+ && swapoff -a \
  ## Cleanup
  && apt-get autoremove && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
