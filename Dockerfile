@@ -63,7 +63,7 @@ RUN chmod 755 /opt/entrypoint.sh
 COPY runas.sh /opt/
 RUN chmod 755 /opt/runas.sh
 
-EXPOSE 7000/tcp 7001/tcp 7199/tcp 9042/tcp 9160/tcp 9200/tcp 5601/tcp 5606/tcp
+EXPOSE 7000/tcp 7001/tcp 7199/tcp 9042/tcp 9160/tcp 9200/tcp 9222/tcp 5601/tcp 5606/tcp
 
 # Exec on start
 ENTRYPOINT ["/dumb-init", "--"]
