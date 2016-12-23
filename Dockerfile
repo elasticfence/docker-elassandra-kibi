@@ -50,7 +50,7 @@ RUN \
  && chown -R kibi:kibi /opt/kibi \
  && chown -R kibi:kibi /opt/elassandra \
  ## Reverse Proxy
- && npm install --global @cedx/reverse-proxy \
+ && npm install -g kiss-proxy \
  ## Swapoff attempt
  && swapoff -a \
  ## Cleanup
