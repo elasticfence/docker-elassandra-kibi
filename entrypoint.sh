@@ -2,9 +2,6 @@
 set -e
 set -xv
 
-# Prerun
-swapoff -a
-
 echo "Starting Elassandra... "
 export CASSANDRA_HOME=/opt/elassandra
 source $CASSANDRA_HOME/bin/aliases.sh
