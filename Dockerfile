@@ -24,7 +24,7 @@ RUN \
  && apt-get -y install libjna-java \
  # && ln -s /usr/share/java/jna.jar /usr/share/cassandra/lib \
  ## Install Elassandra 
- && wget -O /tmp/elassandra-242-snap.zip https://transfer.sh/9jNtL/elassandra-242-snap.zip \
+ && wget -O /tmp/elassandra-242-snap.zip https://transfer.sh/iV9Gy/elassandra-2.4.2.zip \
  && unzip /tmp/elassandra-242-snap.zip -d /opt && mv /opt/elassandra-2.4.2 /opt/elassandra \
  && rm -rf /tmp/elassandra-242-snap.zip \
  # && apt-get clean && apt-get -y --force-yes install elassandra \
