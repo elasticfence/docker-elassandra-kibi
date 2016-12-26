@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-set -xv
+# set -xv
 
 echo "Starting Elassandra... "
 export CASSANDRA_HOME=/opt/elassandra
@@ -9,12 +9,12 @@ $CASSANDRA_HOME/bin/cassandra -e &
 sleep 5
 
 # Patch demo kibi to use standard ES port
-perl -p -i -e "s/localhost:9220/127.0.0.1:9200/" /opt/kibi/config/kibi.yml
-perl -p -i -e "s/localhost/172.17.0.2/" /opt/kibi/config/kibi.yml
+perl -p -i -e "s/localhost:9200/127.0.0.1:9200/" /opt/kibana/config/kibana.yml
+perl -p -i -e "s/localhost/172.17.0.2/" /opt/kibana/config/kibana.yml
 
-# Start Kibi
-echo "Starting Kibi... "
-/opt/kibi/bin/kibi >> $CASSANDRA_LOGS/kibi.log &
+# Start kibana
+echo "Starting Kibana... "
+/opt/kibana/bin/kibana >> $CASSANDRA_LOGS/kibana.log &
 
 # Get Cassandra Status
 $CASSANDRA_HOME/bin/nodetool status &
