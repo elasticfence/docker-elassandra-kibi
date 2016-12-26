@@ -1,8 +1,8 @@
 # docker-elassandra-kibi
-Docker Elassandra 2.4.2 + Kibi 4.5.4
+Docker Elassandra 2.4.2 + Kibana 4.6
 
 ```
-docker run -ti --rm --name elassandra -p 9200:9222 -p 5606:5606 -P qxip/docker-elassandra-kibi:dev
+docker run -ti --rm --name elassandra -p 9200:9222 -p 5601:5601 -P qxip/docker-elassandra-kibana
 ```
 
 ### WARNING
