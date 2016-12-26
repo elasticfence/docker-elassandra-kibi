@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-set -xv
+# set -xv
 
 echo "Starting Elassandra... "
 export CASSANDRA_HOME=/opt/elassandra
