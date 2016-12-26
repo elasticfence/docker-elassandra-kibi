@@ -29,26 +29,26 @@ RUN \
  && rm -rf /tmp/elassandra-242-snap.zip \
  # && apt-get clean && apt-get -y --force-yes install elassandra \
  ## Setup Extras
- && groupadd -r kibi && useradd -r -m -g kibi kibi \
+ && groupadd -r kibana && useradd -r -m -g kibana kibana \
  && wget -O /dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.1.3/dumb-init_1.1.3_amd64 \
  && chmod +x /dumb-init \
  && curl -sL https://deb.nodesource.com/setup_4.x | bash - \
  && apt-get install -y nodejs \
- ## Get Kibi
- && cd /opt && wget https://download.support.siren.solutions/kibi/community?file=kibi-community-standalone-4.5.4-linux-x64.zip -O kibi-4.5.4-linux-x64.zip \
- && unzip kibi-4.5.4-linux-x64.zip \
- && rm -rf /opt/kibi-4.5.4-linux-x64.zip \
- && mv kibi-community-standalone-4.5.4-linux-x64 kibi \
- && chown -R kibi:kibi /opt/kibi \
+ ## Get kibana
+ && cd /opt && wget https://download.elastic.co/kibana/kibana/kibana-4.6.3-linux-x86_64.tar.gz -O kibana-4.6.3-linux-x86_64.tar.gz \
+ && tar zxvf kibana-4.6.3-linux-x86_64.tar.gz \
+ && rm -rf kibana-4.6.3-linux-x86_64.tar.gz \
+ && mv kibana-4.6.3-linux-x86_64 kibana \
+ && chown -R kibana:kibana /opt/kibana \
  ## Stuff
- && cd /opt/kibi \
- && ./bin/kibi plugin --install sentinl -u https://github.com/sirensolutions/sentinl/releases/download/snapshot/sentinl-latest.tar.gz \
- # && ./bin/kibi plugin --install kibana-auth-plugin -u https://github.com/elasticfence/kibana-auth-elasticfence/releases/download/snapshot/kauth-latest.tar.gz \
- && ./bin/kibi plugin --install kibrand -u https://github.com/elasticfence/kibrand/archive/0.4.5.zip \
- && ./bin/kibi plugin --install elastic/timelion \
- && ./bin/kibi plugin --install elastic/sense \
- && chown -R kibi:kibi /opt/kibi \
- && chown -R kibi:kibi /opt/elassandra \
+ && cd /opt/kibana \
+ && ./bin/kibana plugin --install sentinl -u https://github.com/sirensolutions/sentinl/releases/download/snapshot/sentinl-latest.tar.gz \
+ # && ./bin/kibana plugin --install kibana-auth-plugin -u https://github.com/elasticfence/kibana-auth-elasticfence/releases/download/snapshot/kauth-latest.tar.gz \
+ && ./bin/kibana plugin --install kibrand -u https://github.com/elasticfence/kibrand/archive/0.4.5.zip \
+ && ./bin/kibana plugin --install elastic/timelion \
+ && ./bin/kibana plugin --install elastic/sense \
+ && chown -R kibana:kibana /opt/kibana \
+ && chown -R kibana:kibana /opt/elassandra \
  ## Reverse Proxy
  && npm install -g kiss-proxy \
  ## Swapoff attempt
