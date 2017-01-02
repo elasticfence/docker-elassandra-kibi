@@ -3,6 +3,7 @@ set -e
 # set -xv
 
 echo "Starting Elassandra... "
+echo "cluster.default_drop_on_delete_index" >> /opt/elassandra/conf/elasticsearch.yml
 export CASSANDRA_HOME=/opt/elassandra
 source $CASSANDRA_HOME/bin/aliases.sh
 $CASSANDRA_HOME/bin/cassandra -e &
